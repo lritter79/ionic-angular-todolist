@@ -12,7 +12,7 @@ export class AddTodoComponent implements OnInit {
   constructor() { }
   addTodo(){
     const color = `rgb(${this.randomNumber(0, 255)}, (${this.randomNumber(0, 255)}, (${this.randomNumber(0, 255)})`;
-    this.todos.push({color, text:this.todoText});
+    this.todos.push({color, text:this.todoText, id: this.todos.length});
     console.log(this.todos);
     this.todoText = '';
   }
@@ -22,6 +22,11 @@ export class AddTodoComponent implements OnInit {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+removeTodo(id: number) {
+  this.todos = this.todos.filter(todo => todo.id !== id).map((oldTodo, i) => ({color: oldTodo.color, text: oldTodo.text, id: i}));
+
+}
 
   ngOnInit() {
     this.todoText='';

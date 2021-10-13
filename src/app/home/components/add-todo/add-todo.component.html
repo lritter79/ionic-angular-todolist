@@ -9,6 +9,7 @@
           <ion-input type="text" [(ngModel)]="todoText"></ion-input>
         </ion-item>
         <ion-button (click)="addTodo()" color="success" size="full">Submit</ion-button>
+        <app-todo-list [todos]=todos (removeTodo)="removeTodo($event)"></app-todo-list>
       </ion-card-content>
     </ion-card>
 

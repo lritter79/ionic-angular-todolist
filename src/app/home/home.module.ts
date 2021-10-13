@@ -6,7 +6,6 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { AddTodoComponentModule } from './components/add-todo/add-todo.module';
-import { TodoListModule } from './components/todo-list/todo-list.module';
 
 
 
@@ -17,7 +16,6 @@ import { TodoListModule } from './components/todo-list/todo-list.module';
     IonicModule,
     HomePageRoutingModule,
     AddTodoComponentModule,
-    TodoListModule
   ],
   declarations: [HomePage]
 })
