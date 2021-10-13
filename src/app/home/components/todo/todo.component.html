@@ -1,11 +1,12 @@
 
 <ion-item lines="full">
+  <ion-button (click)="showNotes = !showNotes" slot="start" color="primary">{{showNotes ?'Hide' : 'Show'}} Notes</ion-button>
   <ion-button (click)="deleteTodo(todo.id)" slot="end" color="danger">X</ion-button>
   <ion-label>
     <ion-text>
       <h1 class="todo-text">{{ (+indexOfElement+1) + '. ' + todo.text}}</h1>
     </ion-text>
-    <ion-note>
+    <ion-note *ngIf=showNotes>
       {{todo.notes}}
     </ion-note>
   </ion-label>

@@ -11,12 +11,15 @@ export class TodoComponent implements OnInit {
   @Input() todo: Todo;
   @Input() indexOfElement: number;
   @Output() todoIdToDelete = new EventEmitter<number>();
-
+  showNotes = true;
   constructor() { }
 
   ngOnInit() {
     const el = document.querySelector<HTMLElement>('.todo-text');
     el.style.setProperty('--ion-background', this.todo.color);
+  }
+  toggleShowNotes(notes: boolean) {
+    this.showNotes = !notes;
   }
   deleteTodo(todoId: number) {
     //console.log(todoId);
