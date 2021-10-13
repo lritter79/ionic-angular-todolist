@@ -1,0 +1,18 @@
+
+  <div class="flex-center">
+    <ion-card>
+      <ion-card-title color="success">Add A Todo</ion-card-title>
+      <ion-card-subtitle>Just enter the text and click the button</ion-card-subtitle>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Enter Your Todo Item</ion-label>
+          <ion-input type="text" [(ngModel)]="todoText"></ion-input>
+        </ion-item>
+        <ion-button (click)="addTodo()" color="success" size="full">Submit</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+
+
+  </div>
+

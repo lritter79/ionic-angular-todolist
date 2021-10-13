@@ -1,0 +1,17 @@
+<div>
+  <p>
+    Todos
+  </p>
+  <ion-list>
+    <ion-item *ngFor="let todo of todos;let indexOfelement=index;">
+      <ion-label>
+        {{indexOfelement + 1}}
+        <p [style.color]="todo.color">{{ todo.text}}</p>
+
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
+</div>
+
