@@ -9,12 +9,14 @@ import { Todo } from '../todo';
 export class AddTodoComponent implements OnInit {
   @Input() todos: Todo[];
   todoText: string;
+  todoNotes: string;
   constructor() { }
   addTodo(){
     const color = `rgb(${this.randomNumber(0, 255)}, (${this.randomNumber(0, 255)}, (${this.randomNumber(0, 255)})`;
-    this.todos.push({color, text:this.todoText, id: this.todos.length});
+    this.todos.push({color, text:this.todoText, id: this.todos.length, notes: this.todoNotes});
     console.log(this.todos);
     this.todoText = '';
+    this.todoNotes = '';
   }
 
   randomNumber(min, max) {
@@ -24,8 +26,12 @@ export class AddTodoComponent implements OnInit {
   }
 
 removeTodo(id: number) {
-  this.todos = this.todos.filter(todo => todo.id !== id).map((oldTodo, i) => ({color: oldTodo.color, text: oldTodo.text, id: i}));
+  this.todos = this.todos.filter(todo => todo.id !== id).map((oldTodo, i) => (this.mapTodo(oldTodo, i)));
 
+}
+
+mapTodo(oldTodo: Todo, i: number): Todo {
+  return {color: oldTodo.color, text: oldTodo.text, id: i, notes: oldTodo.notes};
 }
 
   ngOnInit() {

@@ -9,15 +9,17 @@ import { Todo } from '../todo';
 })
 export class TodoListComponent implements OnInit {
   @Input() todos: Todo[];
-  @Output() removeTodo = new EventEmitter<number>();
+  @Output() todoIdToDelete = new EventEmitter<number>();
+
   constructor() { }
-  deleteTodo(todoId: number) {
-    console.log(todoId);
-    console.log(this.todos);
-    this.todos = this.todos.filter(todo => todo.id !== todoId).map((oldTodo, i) => ({color: oldTodo.color, text: oldTodo.text, id: i}));
-    console.log(this.todos);
-    this.removeTodo.emit(todoId);
-  }
+
   ngOnInit() {}
 
+  deleteTodo(todoId: number) {
+    //console.log(todoId);
+    //console.log(this.todos);
+    //this.todos = this.todos.filter(todo => todo.id !== todoId).map((oldTodo, i) => ({color: oldTodo.color, text: oldTodo.text, id: i}));
+    //console.log(this.todos);
+    this.todoIdToDelete.emit(todoId);
+  }
 }

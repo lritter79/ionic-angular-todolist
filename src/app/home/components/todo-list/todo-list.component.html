@@ -1,13 +1,8 @@
 <div>
-  <ion-list>
-    <ion-item *ngFor="let todo of todos;let indexOfelement=index;">
-      <ion-label>
-        {{indexOfelement + 1}}
-        <p [style.color]="todo.color">{{ todo.text}}</p>
-        <ion-button (click)="deleteTodo(todo.id)" color="danger">X</ion-button>
-      </ion-label>
+  <ion-list *ngFor="let todo of todos;let indexOfelement=index;">
 
-    </ion-item>
+      <app-todo [indexOfElement]=indexOfelement [todo]=todo (todoIdToDelete)="deleteTodo($event)"></app-todo>
+
   </ion-list>
 
 </div>

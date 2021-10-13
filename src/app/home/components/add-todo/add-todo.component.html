@@ -8,8 +8,12 @@
           <ion-label position="floating">Enter Your Todo Item</ion-label>
           <ion-input type="text" [(ngModel)]="todoText"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label position="floating">Enter Any Notes About Your Item</ion-label>
+          <ion-input type="text" [(ngModel)]="todoNotes"></ion-input>
+        </ion-item>
         <ion-button (click)="addTodo()" color="success" size="full">Submit</ion-button>
-        <app-todo-list [todos]=todos (removeTodo)="removeTodo($event)"></app-todo-list>
+        <app-todo-list [todos]=todos (todoIdToDelete)="removeTodo($event)"></app-todo-list>
       </ion-card-content>
     </ion-card>
 

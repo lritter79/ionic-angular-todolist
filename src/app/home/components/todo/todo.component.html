@@ -1,3 +1,14 @@
-<p>
-  todo works!
-</p>
+
+<ion-item lines="full">
+  <ion-button (click)="deleteTodo(todo.id)" slot="end" color="danger">X</ion-button>
+  <ion-label>
+    <ion-text>
+      <h1 class="todo-text">{{ (+indexOfElement+1) + '. ' + todo.text}}</h1>
+    </ion-text>
+    <ion-note>
+      {{todo.notes}}
+    </ion-note>
+  </ion-label>
+</ion-item>
+
+

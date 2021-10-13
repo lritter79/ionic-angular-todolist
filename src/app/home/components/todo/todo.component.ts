@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Todo } from '../todo';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-todo',
@@ -6,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent implements OnInit {
+  @Input() todo: Todo;
+  @Input() indexOfElement: number;
+  @Output() todoIdToDelete = new EventEmitter<number>();
 
   constructor() { }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    const el = document.querySelector<HTMLElement>('.todo-text');
+    el.style.setProperty('--ion-background', this.todo.color);
+  }
+  deleteTodo(todoId: number) {
+    //console.log(todoId);
+    //console.log(this.todos);
+    //this.todos = this.todos.filter(todo => todo.id !== todoId).map((oldTodo, i) => ({color: oldTodo.color, text: oldTodo.text, id: i}));
+    //console.log(this.todos);
+    this.todoIdToDelete.emit(todoId);
+  }
 }
