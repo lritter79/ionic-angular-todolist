@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Todo } from '../todo';
 
 @Component({
@@ -8,15 +9,29 @@ import { Todo } from '../todo';
 })
 export class AddTodoComponent implements OnInit {
   @Input() todos: Todo[];
-  todoText: string;
-  todoNotes: string;
-  constructor() { }
-  addTodo(){
-    const color = `rgb(${this.randomNumber(0, 255)}, (${this.randomNumber(0, 255)}, (${this.randomNumber(0, 255)})`;
-    this.todos.push({color, text:this.todoText, id: this.todos.length, notes: this.todoNotes});
-    console.log(this.todos);
-    this.todoText = '';
-    this.todoNotes = '';
+ // todoText: string;
+  //todoNotes: string;
+
+  //https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
+  todoForm: FormGroup;
+
+  constructor(public formBuilder: FormBuilder) {
+    this.todoForm = new FormGroup({
+      todoText: new FormControl('',  Validators.compose([Validators.required, Validators.minLength(4)])),
+      todoNotes: new FormControl('')
+    });
+   }
+  addTodo(): void {
+    if(this.todoForm.valid){
+      const color = `rgb(${this.randomNumber(0, 255)}, ${this.randomNumber(0, 255)}, ${this.randomNumber(0, 255)})`;
+      const newTodo = {color, text:this.todoForm.get('todoText').value, id: this.todos.length, notes: this.todoForm.get('todoNotes').value};
+      this.todos.push(newTodo);
+      console.log(this.todos);
+      this.todoForm.reset();
+  }
+
+    //this.todoText = '';
+    //this.todoNotes = '';
   }
 
   randomNumber(min, max) {
@@ -35,7 +50,7 @@ mapTodo(oldTodo: Todo, i: number): Todo {
 }
 
   ngOnInit() {
-    this.todoText='';
+
   }
 
 

@@ -1,18 +1,27 @@
 
   <div class="flex-center">
+
     <ion-card>
       <ion-card-title class="flex-center" color="success">Add A Todo</ion-card-title>
       <ion-card-subtitle class="flex-center">Just enter the text and click the button</ion-card-subtitle>
       <ion-card-content>
-        <ion-item>
-          <ion-label position="floating">Enter Your Todo Item</ion-label>
-          <ion-input type="text" [(ngModel)]="todoText"></ion-input>
+        <form [formGroup]="todoForm" (ngSubmit)="addTodo()">
+          <ion-item>
+            <ion-label position="floating">Enter Your Todo Item</ion-label>
+            <ion-input type="text" formControlName="todoText"></ion-input>
+          </ion-item>
+          <ion-item
+          *ngIf="!todoForm.controls.todoText.valid"
+        >
+          <p>Please enter a Todo Item with at least 4 characters.</p>
         </ion-item>
-        <ion-item>
-          <ion-label position="floating">Enter Any Notes About Your Item</ion-label>
-          <ion-input type="text" [(ngModel)]="todoNotes"></ion-input>
-        </ion-item>
-        <ion-button (click)="addTodo()" color="success" size="full">Submit</ion-button>
+          <ion-item>
+            <ion-label position="floating">Enter Any Notes About Your Item</ion-label>
+            <ion-input type="text" formControlName="todoNotes"></ion-input>
+          </ion-item>
+          <ion-button color="success" [disabled]="!todoForm.valid" type="submit" size="full">Submit</ion-button>
+        </form>
+
         <app-todo-list [todos]=todos (todoIdToDelete)="removeTodo($event)"></app-todo-list>
       </ion-card-content>
     </ion-card>
