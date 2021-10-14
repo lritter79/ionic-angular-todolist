@@ -13,7 +13,9 @@ export class TodoListComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.todos[0]?.color);
+  }
 
   deleteTodo(todoId: number) {
     //console.log(todoId);

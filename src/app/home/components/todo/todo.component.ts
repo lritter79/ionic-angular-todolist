@@ -15,17 +15,16 @@ export class TodoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const el = document.querySelector<HTMLElement>('.todo-text');
-    el.style.setProperty('--ion-background', this.todo.color);
+    console.log(this.todo.color);
+    //const el = document.querySelector<HTMLElement>('.todo-text');
+    //el.style.setProperty('color', );
   }
   toggleShowNotes(notes: boolean) {
     this.showNotes = !notes;
   }
+
   deleteTodo(todoId: number) {
-    //console.log(todoId);
-    //console.log(this.todos);
-    //this.todos = this.todos.filter(todo => todo.id !== todoId).map((oldTodo, i) => ({color: oldTodo.color, text: oldTodo.text, id: i}));
-    //console.log(this.todos);
+    //emit passes todoId to the parent component, which eventually passes it to the grand parent where the todo array is stored
     this.todoIdToDelete.emit(todoId);
   }
 }

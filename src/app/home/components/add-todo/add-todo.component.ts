@@ -17,14 +17,20 @@ export class AddTodoComponent implements OnInit {
 
   constructor(public formBuilder: FormBuilder) {
     this.todoForm = new FormGroup({
+      //Validators.compose takes multiple vaidators with differetnt rules sets and bundles them
       todoText: new FormControl('',  Validators.compose([Validators.required, Validators.minLength(4)])),
       todoNotes: new FormControl('')
     });
    }
+   //call this method on submit for the form
   addTodo(): void {
     if(this.todoForm.valid){
       const color = `rgb(${this.randomNumber(0, 255)}, ${this.randomNumber(0, 255)}, ${this.randomNumber(0, 255)})`;
-      const newTodo = {color, text:this.todoForm.get('todoText').value, id: this.todos.length, notes: this.todoForm.get('todoNotes').value};
+      //get() takes in the comntrol's name
+      const newTodo = {color,
+        text:this.todoForm.get('todoText').value,
+        id: this.todos.length,
+        notes: this.todoForm.get('todoNotes').value};
       this.todos.push(newTodo);
       console.log(this.todos);
       this.todoForm.reset();
