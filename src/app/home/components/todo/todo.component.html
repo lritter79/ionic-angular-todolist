@@ -8,9 +8,16 @@
       <h1 [style.color]="todo.color" class="todo-text">{{ (+indexOfElement+1) + '. ' + todo.text}}</h1>
     </ion-text>
     <ion-note *ngIf=showNotes>
-      {{todo.notes + ' ' + (todo.isCompleted ? 'done' : '')}}
+      {{todo.notes}}
     </ion-note>
+    <ion-chip *ngIf="!todo.isCompleted;" color="danger">
+      <ion-label>Not Done!</ion-label>
+    </ion-chip>
+    <ion-chip #done *ngIf="todo.isCompleted;" color="success">
+      <ion-label>Done!</ion-label>
+    </ion-chip>
   </ion-label>
+
 </ion-item>
 
 
