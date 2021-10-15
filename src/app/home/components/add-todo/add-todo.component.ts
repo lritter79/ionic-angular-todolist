@@ -14,6 +14,7 @@ export class AddTodoComponent implements OnInit {
 
   //https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
   todoForm: FormGroup;
+  showTextHint = false;
 
   constructor(public formBuilder: FormBuilder) {
     this.todoForm = new FormGroup({
@@ -30,10 +31,15 @@ export class AddTodoComponent implements OnInit {
       const newTodo = {color,
         text:this.todoForm.get('todoText').value,
         id: this.todos.length,
-        notes: this.todoForm.get('todoNotes').value};
+        notes: this.todoForm.get('todoNotes').value,
+        isCompleted: false
+      };
       this.todos.push(newTodo);
       console.log(this.todos);
       this.todoForm.reset();
+      this.showTextHint = false;
+  } else {
+    this.showTextHint = true;
   }
 
     //this.todoText = '';
@@ -52,7 +58,7 @@ removeTodo(id: number) {
 }
 
 mapTodo(oldTodo: Todo, i: number): Todo {
-  return {color: oldTodo.color, text: oldTodo.text, id: i, notes: oldTodo.notes};
+  return {...oldTodo, id:i};
 }
 
   ngOnInit() {

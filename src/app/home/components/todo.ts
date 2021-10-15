@@ -3,4 +3,5 @@ export class Todo {
   color: string;
   id: number;
   notes: string;
+  isCompleted: boolean;
 }

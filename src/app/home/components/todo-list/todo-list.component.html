@@ -1,4 +1,8 @@
 <div>
+  <ion-item>
+    <ion-label># of tasks to do</ion-label>
+    <ion-badge color="secondary" slot="end">{{ todos.length}}</ion-badge>
+  </ion-item>
   <ion-list *ngFor="let todo of todos;let indexOfelement=index;">
 
       <app-todo [indexOfElement]=indexOfelement [todo]=todo (todoIdToDelete)="deleteTodo($event)"></app-todo>

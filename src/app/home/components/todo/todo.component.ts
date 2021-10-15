@@ -15,12 +15,17 @@ export class TodoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.todo.color);
+    console.log(this.todo.isCompleted);
     //const el = document.querySelector<HTMLElement>('.todo-text');
     //el.style.setProperty('color', );
   }
   toggleShowNotes(notes: boolean) {
-    this.showNotes = !notes;
+    this.showNotes = !this.showNotes;
+  }
+
+  toggleIsCompleted() {
+    console.log(this.todo.isCompleted);
+    //this.todo.isCompleted = !this.todo.isCompleted;
   }
 
   deleteTodo(todoId: number) {

@@ -11,15 +11,15 @@
             <ion-input type="text" formControlName="todoText"></ion-input>
           </ion-item>
           <ion-item
-          *ngIf="!todoForm.controls.todoText.valid"
+          *ngIf="showTextHint"
         >
-          <p>Please enter a Todo Item with at least 4 characters.</p>
+          <p class="warn">Please enter a Todo Item with at least 4 characters.</p>
         </ion-item>
           <ion-item>
             <ion-label position="floating">Enter Any Notes About Your Item</ion-label>
             <ion-input type="text" formControlName="todoNotes"></ion-input>
           </ion-item>
-          <ion-button color="success" [disabled]="!todoForm.valid" type="submit" size="full">Submit</ion-button>
+          <ion-button color="success" type="submit" size="full">Submit</ion-button>
         </form>
         <!-- the $event is the id being emitted by the child component -->
         <app-todo-list [todos]=todos (todoIdToDelete)="removeTodo($event)"></app-todo-list>
