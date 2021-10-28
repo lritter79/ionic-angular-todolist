@@ -27,18 +27,18 @@ export class AddTodoComponent implements OnInit {
    updateTodo(todo: Todo): void {
     console.log(this.todos);
     console.log(todo);
-    this.todos = this.todos.map(singleTodo => {
-      if (singleTodo.id !== todo.id){
-        return singleTodo;
-      }
-      else
-      {
-        console.log(todo);
-        return todo;
-      }
-    });
-    //console.log(this.todos);
-    localStorage.setItem('todos', JSON.stringify(this.todos));
+    // this.todos = this.todos.map(singleTodo => {
+    //   if (singleTodo.id !== todo.id){
+    //     return singleTodo;
+    //   }
+    //   else
+    //   {
+    //     console.log(todo);
+    //     return todo;
+    //   }
+    // });
+    // //console.log(this.todos);
+    // localStorage.setItem('todos', JSON.stringify(this.todos));
    }
   addTodo(): void {
     if(this.todoForm.valid){

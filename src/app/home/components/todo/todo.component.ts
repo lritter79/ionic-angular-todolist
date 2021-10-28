@@ -27,6 +27,18 @@ export class TodoComponent implements OnInit {
   toggleIsCompleted() {
 
     this.updatedToDo.emit({... this.todo, isCompleted: !this.todo.isCompleted});
+    const todos = JSON.parse(localStorage.getItem('todos')).map(singleTodo => {
+      if (singleTodo.id !== this.todo.id){
+        return singleTodo;
+      }
+      else
+      {
+
+        return {... this.todo, isCompleted: !this.todo.isCompleted};
+      }
+    });
+    //console.log(this.todos);
+    localStorage.setItem('todos', JSON.stringify(todos));
   }
 
   deleteTodo(todoId: number) {
