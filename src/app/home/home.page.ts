@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.todos = [];
+    this.todos = localStorage.getItem('todos') !== null ? JSON.parse(localStorage.getItem('todos')) as Todo[] : [] as Todo[];
   }
 
 }

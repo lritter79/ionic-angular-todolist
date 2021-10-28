@@ -1,8 +1,14 @@
 
 <ion-item  lines="full">
   <ion-button (click)="showNotes = !showNotes" slot="start" color="primary">{{showNotes ?'Hide' : 'Show'}} Notes</ion-button>
-  <ion-button (click)="deleteTodo(todo.id)" slot="end" color="danger">X</ion-button>
+  <ion-chip #done slot="start" *ngIf="todo.isCompleted;" color="success">
+    <ion-label>Done!</ion-label>
+  </ion-chip>
+  <ion-chip *ngIf="!todo.isCompleted;" slot="start" color="danger">
+    <ion-label>Not Done!</ion-label>
+  </ion-chip>
   <ion-checkbox color="primary"  [(ngModel)]="todo.isCompleted" (click)="toggleIsCompleted()" slot="end"></ion-checkbox>
+  <ion-button (click)="deleteTodo(todo.id)" slot="end" color="danger">X</ion-button>
   <ion-label>
     <ion-text>
       <h1 [style.color]="todo.color" class="todo-text">{{ (+indexOfElement+1) + '. ' + todo.text}}</h1>
@@ -10,12 +16,8 @@
     <ion-note *ngIf=showNotes>
       {{todo.notes}}
     </ion-note>
-    <ion-chip *ngIf="!todo.isCompleted;" color="danger">
-      <ion-label>Not Done!</ion-label>
-    </ion-chip>
-    <ion-chip #done *ngIf="todo.isCompleted;" color="success">
-      <ion-label>Done!</ion-label>
-    </ion-chip>
+
+
   </ion-label>
 
 </ion-item>

@@ -11,6 +11,7 @@ export class TodoComponent implements OnInit {
   @Input() todo: Todo;
   @Input() indexOfElement: number;
   @Output() todoIdToDelete = new EventEmitter<number>();
+  @Output() updatedToDo = new EventEmitter<Todo>();
   showNotes = true;
   constructor() { }
 
@@ -24,8 +25,8 @@ export class TodoComponent implements OnInit {
   }
 
   toggleIsCompleted() {
-    console.log(this.todo.isCompleted);
-    //this.todo.isCompleted = !this.todo.isCompleted;
+
+    this.updatedToDo.emit({... this.todo, isCompleted: !this.todo.isCompleted});
   }
 
   deleteTodo(todoId: number) {

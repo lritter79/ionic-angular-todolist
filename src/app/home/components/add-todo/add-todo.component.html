@@ -22,7 +22,7 @@
           <ion-button color="success" type="submit" size="full">Submit</ion-button>
         </form>
         <!-- the $event is the id being emitted by the child component -->
-        <app-todo-list [todos]=todos (todoIdToDelete)="removeTodo($event)"></app-todo-list>
+        <app-todo-list [todos]=todos (todoIdToDelete)="removeTodo($event)" (updatedToDo)="updateTodo($event)"></app-todo-list>
       </ion-card-content>
     </ion-card>
 
